@@ -18,11 +18,12 @@ def load_settings():
         email=os.getenv("EMAIL_ADDRESS"),
         email_password=os.getenv("EMAIL_APP_PASSWORD"),
         imap_host=os.getenv("IMAP_HOST"),
-        imap_port=os.getenv("IMAP_PORT"),
+        imap_port=int(os.getenv("IMAP_PORT")),
         smtp_host=os.getenv("SMTP_HOST"),
-        smtp_port=os.getenv("SMTP_PORT"),
+        smtp_port=int(os.getenv("SMTP_PORT")),
         anthropic_api_key=os.getenv("ANTHROPIC_API_KEY"),
         claude_model=os.getenv("CLAUDE_MODEL"),
     )
     return settings
 
+settings = load_settings()

@@ -1,18 +1,18 @@
-"""Gmail API: list and fetch messages for polling."""
+"""IMAP: fetch messages. SMTP: send replies."""
 
 from __future__ import annotations
 
 
-def build_gmail_service(credentials):
-    # TODO: construct a Gmail API service resource from google credentials
+def fetch_messages_since(imap, since_uid: int | None):
+    # TODO: SEARCH UNSEEN or SINCE / UID range; return a list of message identifiers (UIDs or indices) for the agent loop
     raise NotImplementedError
 
 
-def fetch_messages_since(service, since_internal_date_ms: int | None):
-    # TODO: list message ids / threads updated after the given internalDate (or full sync strategy)
+def get_message_rfc822(imap, message_id: str):
+    # TODO: FETCH the message (BODY.PEEK[] or RFC822); return bytes or parsed email.message.EmailMessage for Claude
     raise NotImplementedError
 
 
-def get_message_rfc822(service, message_id: str):
-    # TODO: return raw RFC822 or parsed structure suitable for Claude (headers + body text)
+def send_message(smtp, from_addr: str, to_addrs: list[str], message_bytes: bytes):
+    # TODO: sendmail / send_message for a drafted MIME reply (respect threading headers In-Reply-To, References)
     raise NotImplementedError

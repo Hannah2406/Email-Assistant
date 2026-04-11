@@ -1,1 +1,1 @@
-"""Gmail OAuth and API client."""
+"""IMAP (receive) and SMTP (send) using app-password authentication."""

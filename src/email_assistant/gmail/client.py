@@ -3,14 +3,14 @@
 from __future__ import annotations
 
 
-def fetch_messages_since(imap, since_uid: int | None):
-    # TODO: SEARCH UNSEEN or SINCE / UID range; return a list of message identifiers (UIDs or indices) for the agent loop
-    raise NotImplementedError
+def fetch_new_message(imap):
+    imap.select("INBOX")
+    status, data = imap.search(None, "ALL")
+    mail_ids = data[0].split()
+    latest_id = mail_ids[-1]
+    status, msg_data = imap.fetch(latest_id, "(RFC822)")
+    return latest_id, msg_data
 
-
-def get_message_rfc822(imap, message_id: str):
-    # TODO: FETCH the message (BODY.PEEK[] or RFC822); return bytes or parsed email.message.EmailMessage for Claude
-    raise NotImplementedError
 
 
 def send_message(smtp, from_addr: str, to_addrs: list[str], message_bytes: bytes):

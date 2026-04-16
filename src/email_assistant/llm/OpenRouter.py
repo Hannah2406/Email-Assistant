@@ -18,11 +18,11 @@ def generate_response(emailSubject, emailBody, emailFrom):
         messages = [
             {
                 "role": "system",
-                "content": "you are a very sad ittle kid who doesnt know anything"
+                "content": ""
             },
             {
                 "role": "user",
-                "content": "what is the meaning of life?"
+                "content": ""
             }
         ],
         max_tokens=500
